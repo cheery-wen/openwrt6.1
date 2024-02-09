@@ -15,7 +15,7 @@
 
 ########### 更改大雕源码（可选）#########
 sed -i 's/PATCHVER:=5.15/PATCHVER:=6.6/g' target/linux/x86/Makefile      
-# sed -i 's/PATCHVER:=6.1/PATCHVER:=6.6/g' target/linux/x86/Makefile
+sed -i 's/PATCHVER:=6.1/PATCHVER:=6.6/g' target/linux/x86/Makefile
 
 # 修改ip地址为192.168.5.1
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
