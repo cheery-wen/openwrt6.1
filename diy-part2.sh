@@ -44,6 +44,16 @@ sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}/g' package/lean/autocore/files/x86/aut
 # 设置ttyd免帐号登录
 # sed -i 's/\/bin\/login/\/bin\/login -f root/' feeds/packages/utils/ttyd/files/ttyd.config
 
+# 插件切换到指定版本 
+# OpenSSL
+#pushd package/libs/openssl
+#git checkout 4fd8d7b7f8b7752ba8bb06e0d43808d0c5fddde0
+#popd
+#
+# curl
+sed -i 's/PKG_VERSION:=.*/PKG_VERSION:=8.5.0/g' feeds/packages/net/curl/Makefile
+sed -i 's/PKG_HASH:=.*/PKG_HASH:=ce4b6a6655431147624aaf582632a36fe1ade262d5fab385c60f78942dd8d87b/g' feeds/packages/net/curl/Makefile
+sed -i 's/PKG_RELEASE:=.*/PKG_RELEASE:=1/g' feeds/packages/net/curl/Makefile
 
 
 # 删除自带插件
