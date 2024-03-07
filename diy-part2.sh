@@ -51,8 +51,8 @@ sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}/g' package/lean/autocore/files/x86/aut
 
 
 # 把curl退到8.5.0
-rm -rf feeds/packages/net/curl
-git clone https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
+# rm -rf feeds/packages/net/curl
+# git clone https://github.com/sbwml/feeds_packages_net_curl feeds/packages/net/curl
 
 # 移除 openwrt feeds 自带的核心包
 # rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
