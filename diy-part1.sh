@@ -82,9 +82,9 @@ git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git
 
 
 #smartdns
-git clone https://github.com/firkerword/luci-app-smartdns.git package/luci-app-smartdns
-git clone https://github.com/firkerword/smartdns.git package/smartdns
-
+# git clone https://github.com/firkerword/luci-app-smartdns.git package/luci-app-smartdns
+# git clone https://github.com/firkerword/smartdns.git package/smartdns
+git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 # git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
