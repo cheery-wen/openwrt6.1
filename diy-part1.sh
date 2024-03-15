@@ -60,6 +60,8 @@ git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/ope
 # git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall-packages.git package/luci-app-passwall
 
+
+
 # Go 1.21 updates
 # rm -rf package/openwrt-passwall/brook
 # rm -rf package/openwrt-passwall/v2ray-core
