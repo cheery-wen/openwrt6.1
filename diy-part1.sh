@@ -57,8 +57,8 @@ svn co https://github.com/kenzok8/jell/trunk/luci-app-control-webrestriction pac
 
 #passwall
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-# git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall-packages.git package/luci-app-passwall
+# git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall-packages.git package/luci-app-passwall
 
 # Go 1.21 updates
 # rm -rf package/openwrt-passwall/brook
@@ -78,6 +78,11 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 # git clone https://github.com/jerrykuku/luci-app-vssr.git package/luci-app-vssr
 # git clone https://github.com/jerrykuku/lua-maxminddb.git package/lua-maxminddb
 # git clone https://github.com/fw876/helloworld.git package/helloworld
+
+
+#smartdns
+git clone https://github.com/firkerword/luci-app-smartdns.git package/luci-app-smartdns
+git clone https://github.com/firkerword/smartdns.git package/smartdns
 
 
 # sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
