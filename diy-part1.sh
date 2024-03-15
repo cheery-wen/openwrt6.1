@@ -45,7 +45,6 @@ git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/l
   
 git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-control-webrestriction package/luci-app-control-webrestriction
-git clone https://github.com/kenzok8/jell/tree/main/luci-app-control-webrestriction package/luci-app-control-webrestriction
 
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
 # git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
@@ -59,8 +58,8 @@ git clone https://github.com/kenzok8/jell/tree/main/luci-app-control-webrestrict
 
 #passwall
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
-# git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+# git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 
 # Go 1.21 updates
@@ -86,7 +85,7 @@ git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git
 #smartdns
 # git clone https://github.com/firkerword/luci-app-smartdns.git package/luci-app-smartdns
 # git clone https://github.com/firkerword/smartdns.git package/smartdns
-git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+# git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 # git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
