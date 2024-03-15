@@ -59,7 +59,7 @@ svn co https://github.com/kenzok8/jell/trunk/luci-app-control-webrestriction pac
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
 # git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall-packages.git package/luci-app-passwall
-
+git clone -b luci-smartdns-new-version https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 
 
 # Go 1.21 updates
