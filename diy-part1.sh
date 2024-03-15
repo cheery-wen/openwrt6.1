@@ -45,7 +45,7 @@ git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/l
   
 git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-control-webrestriction package/luci-app-control-webrestriction
-git clone https://github.com/kenzok8/jell/tree/main/luci-app-control-webrestriction.git package/luci-app-control-webrestriction
+git clone https://github.com/kenzok8/jell/tree/main/luci-app-control-webrestriction package/luci-app-control-webrestriction
 
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
 # git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
