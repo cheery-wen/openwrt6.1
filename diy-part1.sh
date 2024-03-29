@@ -32,7 +32,7 @@
 # sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # Add a feed source
 
-echo "开始 DIY2 配置……"
+echo "开始 DIY1 配置……"
 echo "========================="
 
 function merge_package(){
