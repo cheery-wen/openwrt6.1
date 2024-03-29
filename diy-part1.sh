@@ -32,23 +32,13 @@
 # sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 # Add a feed source
 
-# sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-# sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
-# sed -i '$a src-git ssr https://github.com/fw876/helloworld' feeds.conf.default
-# sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-# git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
-git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
-git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
-# git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
-  
-git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
+echo "开始 DIY2 配置……"
+echo "========================="
 
 function merge_package(){
     repo=`echo $1 | rev | cut -d'/' -f 1 | rev`
     pkg=`echo $2 | rev | cut -d'/' -f 1 | rev`
-    find package/ -follow -name $pkg -not -path "package/custom/*" | xargs -rt rm -rf
+    # find package/ -follow -name $pkg -not -path "package/custom/*" | xargs -rt rm -rf
     git clone --depth=1 --single-branch $1
     mv $2 package/custom/
     rm -rf $repo
@@ -64,13 +54,24 @@ function merge_feed(){
     ./scripts/feeds update $1
     ./scripts/feeds install -a -p $1
 }
+rm -rf package/custom; mkdir package/custom
 
-# 示例:
-# merge_package master https://github.com/WYC-2020/openwrt-packages package/openwrt-packages luci-app-eqos luci-app-openclash luci-app-ddnsto ddnsto 
-# merge_package master https://github.com/lisaac/luci-app-dockerman package/lean applications/luci-app-dockerman
-# merge_package https://github.com/kenzok8/jell package/luci-app-control-webrestriction
+
 merge_package https://github.com/Lienol/openwrt-package openwrt-package/luci-app-control-webrestriction
-# merge_package https://github.com/Lienol/openwrt-package openwrt-package/luci-app-filebrowser
+
+# sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+# sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
+# sed -i '$a src-git ssr https://github.com/fw876/helloworld' feeds.conf.default
+# sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+# git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
+git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
+git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
+git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
+git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
+# git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
+  
+git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
+
 
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
 # git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
