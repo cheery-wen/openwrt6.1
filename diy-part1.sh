@@ -69,7 +69,7 @@ function merge_feed(){
 # merge_package master https://github.com/WYC-2020/openwrt-packages package/openwrt-packages luci-app-eqos luci-app-openclash luci-app-ddnsto ddnsto 
 # merge_package master https://github.com/lisaac/luci-app-dockerman package/lean applications/luci-app-dockerman
 # merge_package https://github.com/kenzok8/jell package/luci-app-control-webrestriction
-merge_package https://github.com/Lienol/openwrt-package package/luci-app-control-webrestriction
+merge_package https://github.com/Lienol/openwrt-package openwrt-packages/luci-app-control-webrestriction
 
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
 # git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
