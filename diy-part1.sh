@@ -71,7 +71,7 @@ git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/l
 # git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
   
 git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
-git clone https://github.com/brvphoenix/luci-app-wrtbwmon.git package/luci-app-wrtbwmon
+git clone https://github.com/brvphoenix/luci-app-wrtbwmon/tree/master/luci-app-wrtbwmon.git package/luci-app-wrtbwmon
 
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
 # git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
