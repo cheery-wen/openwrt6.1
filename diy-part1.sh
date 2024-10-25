@@ -70,8 +70,8 @@ git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-th
 git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 # git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
 
-merge_package https://github.com/sirpdboy/sirpdboy-package sirpdboy-package/luci-app-wrtbwmon
-git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
+#merge_package https://github.com/sirpdboy/sirpdboy-package sirpdboy-package/luci-app-wrtbwmon
+#git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
 
 # svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
 # git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
