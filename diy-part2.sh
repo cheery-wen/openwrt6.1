@@ -38,8 +38,7 @@ sed -i "/CYXluq4wUazHjmCDBCqXF/d" package/lean/default-settings/files/zzz-defaul
 sed -i "s/OpenWrt /OpenWrt ($(TZ=UTC-8 date "+%Y.%m.%d") compiled by cheery)/g" package/lean/default-settings/files/zzz-default-settings
 
 # 更换默认主题
-sed -i 's/luci-theme-bootstrap/luci-theme-opentomcat/' feeds/luci/collections/luci/Makefile
-
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # 修改概览里时间显示为中文数字
 sed -i 's/os.date()/os.date("%Y年%m月%d日") .. " " .. translate(os.date("%A")) .. " " .. os.date("%X")/g' package/lean/autocore/files/x86/index.htm
@@ -65,8 +64,7 @@ git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/l
 
 # 删除自带插件
 # rm -rf ./package/lean/luci-app-qbittorrent
-rm -rf ./package/lean/luci-theme-argon
-rm -rf ./feeds/luci/luci-theme-argon
+rm -rf ./feeds/luci/themes/luci-theme-argon
 # rm -rf ./package/lean/luci-app-nlbwmon
 rm -rf ./package/lean/luci-app-netdata
 # rm -rf ./package/lean/luci-app-wrtbwmon
