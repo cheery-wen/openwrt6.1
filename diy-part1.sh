@@ -68,8 +68,8 @@ git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-a
 git clone https://github.com/firker/diy-ziyong -b 2305 package/diy-ziyong
 git clone https://github.com/jerrykuku/luci-theme-argon.git  package/luci-theme-argon
 git clone https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
-git clone https://github.com/linkease/istore.git package/istore
-#git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
+# git clone https://github.com/linkease/istore.git package/istore
+# git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
 
 # git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
 
