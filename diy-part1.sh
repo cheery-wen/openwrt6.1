@@ -57,7 +57,6 @@ function merge_feed(){
 rm -rf package/custom; mkdir package/custom
 
 
-merge_package https://github.com/Lienol/openwrt-package openwrt-package/luci-app-control-webrestriction
 
 # sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 # sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
@@ -65,22 +64,14 @@ merge_package https://github.com/Lienol/openwrt-package openwrt-package/luci-app
 # sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 # git clone https://github.com/iwrt/luci-app-ikoolproxy.git package/luci-app-ikoolproxy
 git clone https://github.com/esirplayground/luci-app-poweroff.git package/luci-app-poweroff
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom package/luci-theme-infinityfreedom
-git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/luci-theme-opentomcat
-git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git package/luci-theme-atmaterial
 # git clone https://github.com/sirpdboy/luci-app-netdata.git package/luci-app-netdata
-
-#merge_package https://github.com/sirpdboy/sirpdboy-package sirpdboy-package/luci-app-wrtbwmon
+git clone https://github.com/firker/diy-ziyong -b 2305 package/diy-ziyong
+git clone https://github.com/jerrykuku/luci-theme-argon.git  package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-app-argon-config
+git clone https://github.com/linkease/istore.git package/istore
 #git clone https://github.com/ElvenP/luci-app-onliner.git package/luci-app-onliner
 
-# svn co https://github.com/kenzok8/jell/trunk/luci-app-netdata package/luci-app-netdata
-# git clone https://github.com/Jason6111/luci-app-netdata.git package/luci-app-netdata
-# svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-netdata package/luci-app-netdata
-
-
 # git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
-# sed -i '$a src-git diy https://github.com/firker/diy-ziyong' feeds.conf.default
-# sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 
 #passwall
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
@@ -116,7 +107,6 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 # sed -i '$a src-git bypass https://github.com/garypang13/openwrt-bypass' feeds.conf.default
 # git clone -b master https://github.com/vernesong/OpenClash.git package/OpenClash
 # svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
-git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/luci-theme-edge
 # git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 # git clone https://github.com/sirpdboy/luci-theme-opentopd.git package/luci-theme-opentopd
 # svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt package/aliyundrive-webdav
