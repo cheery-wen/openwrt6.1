@@ -117,5 +117,5 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 # svn export https://github.com/sbwml/packages_lang_golang/branches/20.x feeds/packages/lang/golang
 
 # luci-app-lucky=y 
-# git clone https://github.com/firkerword/luci-app-lucky.git package/lucky
-# chmod 755 ./package/lucky/luci-app-lucky/root/usr/bin/luckyarch
+git clone https://github.com/firkerword/luci-app-lucky.git package/lucky
+chmod 755 ./package/lucky/luci-app-lucky/root/usr/bin/luckyarch
