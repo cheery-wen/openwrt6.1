@@ -118,4 +118,5 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 
 # luci-app-lucky=y 
 # git clone https://github.com/firkerword/luci-app-lucky.git package/lucky
-# chmod 755 ./package/lucky/luci-app-lucky/root/usr/bin/luckyarch
+git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
+chmod 755 ./package/lucky/luci-app-lucky/root/usr/bin/luckyarch
