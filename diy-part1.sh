@@ -80,12 +80,12 @@ git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-pas
 
 
 # Go 1.21 updates
-# rm -rf package/openwrt-passwall/brook
-# rm -rf package/openwrt-passwall/v2ray-core
-# svn export https://github.com/immortalwrt/packages/trunk/net/brook feeds/packages/net/brook
-# ln -sf ../../../feeds/packages/net/brook ./package/feeds/packages/brook
-# svn export https://github.com/immortalwrt/packages/trunk/net/v2ray-core feeds/packages/net/v2ray-core
-# ln -sf ../../../feeds/packages/net/v2ray-core ./package/feeds/packages/v2ray-core
+rm -rf package/openwrt-passwall/brook
+rm -rf package/openwrt-passwall/v2ray-core
+svn export https://github.com/immortalwrt/packages/trunk/net/brook feeds/packages/net/brook
+ln -sf ../../../feeds/packages/net/brook ./package/feeds/packages/brook
+svn export https://github.com/immortalwrt/packages/trunk/net/v2ray-core feeds/packages/net/v2ray-core
+ln -sf ../../../feeds/packages/net/v2ray-core ./package/feeds/packages/v2ray-core
 
 
 
