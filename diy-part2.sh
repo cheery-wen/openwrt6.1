@@ -71,7 +71,11 @@ rm -rf ./package/lean/luci-app-netdata
 # rm -rf ./feeds/packages/net/https-dns-proxy
 # rm -rf ./feeds/diy/openwrt-adguardhome
 
-
+# 设置主机名映射，解决安卓原生TV首次连不上网的问题
+uci add dhcp domain
+uci set "dhcp.@domain[-1].name=time.android.com"
+uci set "dhcp.@domain[-1].ip=203.107.6.88"
+uci commit dhcp
 
 #添加独立软件
 
