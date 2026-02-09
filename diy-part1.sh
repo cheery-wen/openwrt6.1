@@ -74,8 +74,10 @@ git clone https://github.com/jerrykuku/luci-app-argon-config.git  package/luci-a
 # git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
 
 #passwall
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall
+#git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
+src-git passwall_packages https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git;main
+src-git passwall_luci https://github.com/Openwrt-Passwall/openwrt-passwall.git;main
 # git clone -b luci-smartdns-dev https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 
 
