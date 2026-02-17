@@ -20,21 +20,36 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
-
+    runs-on: ubuntu-latest
     steps:
-
-    - name: Maximize Build Space
-      uses: easimon/maximize-build-space@master
-      with:
-        root-reserve-mb: 6144
-        swap-size-mb: 10240
-        remove-dotnet: 'true'
-        remove-android: 'true'
-        remove-haskell: 'true'
-        remove-codeql: 'true'
-        remove-docker-images: 'true'
-        build-mount-path: '/workdir'
+      # -------------------- 1. 激进的系统预清理（新增） --------------------
+      - name: 释放系统最大可用空间
+        run: |
+          sudo apt-get clean
+          docker system prune -af
+          # 删除 GitHub 预装的大型软件包（通常与 OpenWrt 编译无关）
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /opt/hostedtoolcache
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/.cargo
+          sudo rm -rf /usr/local/lib/python3.*
+          sudo rm -rf /usr/local/aws-sam-cli
+          sudo rm -rf /usr/local/aws-cli
+          sudo rm -rf /usr/local/julia*
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf /usr/share/miniconda
+          sudo rm -rf /usr/share/az*
+          sudo rm -rf /usr/share/kotlinc
+          sudo rm -rf /opt/microsoft
+          sudo rm -rf /opt/google
+          sudo rm -rf /var/lib/gems
+          sudo rm -rf /opt/pipx
+          sudo rm -rf /opt/amazon
+          df -h
         
     - name: Checkout
       uses: actions/checkout@main
