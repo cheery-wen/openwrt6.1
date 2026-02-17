@@ -1,20 +1,20 @@
-name: Build OpenWrt6.1
+name: Build OpenWrt (Enhanced Disk Cleanup)
 
 on:
-  repository_dispatch:
+  push:
+    branches: [ master ]
+  schedule:
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: 6.1.config
-  DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
+  CONFIG_FILE: .config
+  DIY_SH: diy.sh
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
@@ -35,6 +35,103 @@ jobs:
           sudo rm -rf /usr/local/lib/node_modules
           sudo rm -rf /opt/hostedtoolcache
           sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/.cargo
+          sudo rm -rf /usr/local/lib/python3.*
+          sudo rm -rf /usr/local/aws-sam-cli
+          sudo rm -rf /usr/local/aws-cli
+          sudo rm -rf /usr/local/julia*
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf /usr/share/miniconda
+          sudo rm -rf /usr/share/az*
+          sudo rm -rf /usr/share/kotlinc
+          sudo rm -rf /opt/microsoft
+          sudo rm -rf /opt/google
+          sudo rm -rf /var/lib/gems
+          sudo rm -rf /opt/pipx
+          sudo rm -rf /opt/amazon
+          df -h
+
+      # -------------------- 2. 检出代码 (P3TERX 标准步骤) --------------------
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # -------------------- 3. 初始化环境 (P3TERX 标准步骤) --------------------
+      - name: Initialization environment
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
+          df -h
+
+      # -------------------- 4. 缓存恢复 (P3TERX 标准步骤) --------------------
+      - name: Cache
+        uses: actions/cache@v4
+        id: caching
+        with:
+          path: |
+            openwrt/dl
+            openwrt/staging_dir
+            openwrt/build_dir
+          key: openwrt-${{ github.sha }}-${{ hashFiles('openwrt/feeds.conf*', 'openwrt/package/**', 'openwrt/target/**', 'openwrt/toolchain/**') }}
+          restore-keys: |
+            openwrt-
+
+      # -------------------- 5. 克隆源码和更新 feeds (P3TERX 标准步骤) --------------------
+      - name: Clone source code and update feeds
+        run: |
+          git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+          cd openwrt
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+      # -------------------- 6. 自定义配置文件 (P3TERX 标准步骤，支持 diy.sh) --------------------
+      - name: Load custom configuration
+        run: |
+          [ -e $CONFIG_FILE ] && cp $CONFIG_FILE openwrt/.config
+          cd openwrt
+          [ -e ../$DIY_SH ] && chmod +x ../$DIY_SH && ../$DIY_SH
+          make defconfig
+
+      # -------------------- 7. 下载源码包 (P3TERX 标准步骤，带重试) --------------------
+      - name: Download packages
+        run: |
+          cd openwrt
+          make download -j8
+          find dl -size -1024c -exec ls -l {} \;
+          make download -j8 || make download -j1 V=s
+
+      # -------------------- 8. 编译固件 (P3TERX 标准步骤) --------------------
+      - name: Build firmware
+        run: |
+          cd openwrt
+          make -j$(nproc) || make -j1 V=s
+
+      # -------------------- 9. 整理固件 (P3TERX 标准步骤) --------------------
+      - name: Organize files
+        run: |
+          cd openwrt
+          mkdir -p artifact
+          find bin/targets -type f -name "*.*" -exec cp -t artifact {} +
+          echo "=============== Firmware files ==============="
+          ls -lh artifact/
+
+      # -------------------- 10. 上传固件 (P3TERX 标准步骤) --------------------
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenWrt_firmware_${{ github.run_number }}
+          path: openwrt/artifact/
+
+      # -------------------- 11. 编译后深度清理（新增） --------------------
+      - name: Deep cleanup after build
+        if: always()
+        run: |
+          # 删除大型中间目录，但保留 dl/ 以便后续缓存（如需清理全部可删除 dl）
+          rm -rf openwrt/build_dir openwrt/bin openwrt/staging_dir openwrt/tmp
+          # 可选：删除下载包缓存（如果空间仍不足，但下次会重新下载）
+          # rm -rf openwrt/dl
+          df -h          sudo rm -rf /usr/local/.ghcup
           sudo rm -rf /usr/local/.cargo
           sudo rm -rf /usr/local/lib/python3.*
           sudo rm -rf /usr/local/aws-sam-cli
